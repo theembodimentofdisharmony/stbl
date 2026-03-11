@@ -1,34 +1,34 @@
-# stbl (Simple Taskbar Library)
+# stbdl (Simple Taskbar Decoration Library)
 
-Document: https://github.com/enstarep/rchp/blob/main/stbl/README.md
+Document: https://github.com/enstarep/rchp/blob/main/stbdl/README.md
 
-Run the following command to install stbl:
+Run the following command to install stbdl:
 
 ```
-pip install stbl
+pip install stbdl
 ```
 No dependencies need to be installed.
 
-stbl supports Python 3.x on Windows
+stbdl supports Python 3.x on Windows
 
 ## Latest Version Changes:
 1. Release 0.1.0 version
 
 ---
 
-# stbl (Simple Taskbar Library)
+# stbdl (Simple Taskbar Decoration Library)
 
-Run the following command to install stbl:
+Run the following command to install stbdl:
 
 ```
-> pip install stbl
+> pip install stbdl
 ```
 
 No dependencies need to be installed.
 
-stbl supports Python 3.x on Windows 10+.
+stbdl supports Python 3.x on Windows 10+.
 
-stbl is a simple taskbar decoration library.
+stbdl is a simple taskbar decoration library.
 
 It mainly includes the following four functions:
 
@@ -39,11 +39,11 @@ def taskbar_switcher() -> wintypes.HWND: ...
 def border(hwnd: wintypes.HWND) -> None: ...
 ```
 
-These functions are all under the `stbl.*` namespace.
+These functions are all under the `stbdl.*` namespace.
 
 ## `window` function
 
-The parameter `path` is the path to the background image, **must be an absolute path**. If no value is provided, it defaults to loading `stbl\white.png`.  
+The parameter `path` is the path to the background image, **must be an absolute path**. If no value is provided, it defaults to loading `stbdl\white.png`.  
 The parameter `mode` is the dynamic style, with the following meanings:
 ```text
 mode=0: Fade in/out
@@ -59,11 +59,11 @@ Also, the background window needs to be clicked on a blank area of the taskbar t
 
 The `window` function returns no value.
 
-**Tip: Do not run the window function multiple times, as this will create multiple stbl processes (but they can be terminated using `taskkill /im stbl.exe`)**
+**Tip: Do not run the window function multiple times, as this will create multiple stbdl processes (but they can be terminated using `taskkill /im stbdl.exe`)**
 
 ## `expansion` function
 
-Enables the stbl taskbar extension. The actual effect depends on system support. It prioritizes the mica effect (requires Windows 11), then the acrylic effect (requires Windows 10), and finally the blur effect.
+Enables the stbdl taskbar extension. The actual effect depends on system support. It prioritizes the mica effect (requires Windows 11), then the acrylic effect (requires Windows 10), and finally the blur effect.
 
 The `expansion` function takes no parameters and returns no value.
 
@@ -82,13 +82,13 @@ The `border` function returns no value.
 ## Example
 
 ```python
-import stbl
+import stbdl
 
-stbl.window()
+stbdl.window()
 
-stbl.expansion()
+stbdl.expansion()
 
-h = stbl.taskbar_switcher()
+h = stbdl.taskbar_switcher()
 
-stbl.border(h)
+stbdl.border(h)
 ```
