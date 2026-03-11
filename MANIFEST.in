@@ -1,5 +1,6 @@
-recursive-include stbl *.exe *.png
+recursive-include stbdl *.exe *.png
 
 include README.md LICENSE
 
-exclude stbl.rc
+
+exclude stbdl.rc
