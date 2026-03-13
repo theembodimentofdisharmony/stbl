@@ -1,0 +1,13 @@
+recursive-include stbdl *.exe *.png
+
+include README.md LICENSE
+
+exclude stbdl.rc
+
+exclude stbdl/*.obj
+
+exclude stbdl/*.cc
+
+exclude stbdl.res
+
+prune /.idea

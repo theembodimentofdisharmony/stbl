@@ -1,15 +1,15 @@
-# stbl (Simple Taskbar Library)
+# stbdl (Simple Taskbar Decoration Library)
 
-Document: https://github.com/enstarep/rchp/blob/main/stbl/README.md
+Documentation: https://rncyk.org/docs/stbdl
 
-Run the following command to install stbl:
+Run the following command to install stbdl:
 
 ```
-pip install stbl
+pip install stbdl
 ```
 No dependencies need to be installed.
 
-stbl supports Python 3.x on Windows
+stbdl supports Python 3.x on Windows 10+
 
 ## Latest Version Changes:
-1. Release 0.1.0 version
+1. Added `cleanup` function
