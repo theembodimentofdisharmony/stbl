@@ -12,4 +12,4 @@ No dependencies need to be installed.
 stbdl supports Python 3.x on Windows 10+
 
 ## Latest Version Changes:
-1. Added `cleanup` function
+1. Fixed the issue of incorrect library names

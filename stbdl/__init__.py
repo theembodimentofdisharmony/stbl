@@ -7,7 +7,7 @@ import ctypes
 from ctypes import wintypes
 
 
-__version__ = "0.5.1"
+__version__ = "0.5.2"
 
 
 def window(path: str = None, mode: int = 3):
@@ -21,6 +21,9 @@ def window(path: str = None, mode: int = 3):
         raise TypeError("The parameter 'path' must be 'str'")
     if not isinstance(mode, int):
         raise TypeError("The parameter 'mode' must be 'int'")
+
+    if -1 > mode > 4:
+        raise TypeError(f"The range of the parameter 'mode' is < -1 or > 4. But got '{mode}'")
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
     pro = os.path.join(current_dir, "stbdl.exe")
@@ -227,3 +230,45 @@ def border(hwnd):
 
     __user32.SetWindowPos(hwnd, None, 0, 0, 0, 0, flags)
     return
+
+def cleanup():
+    """
+    Clear all stbdl windows by sending WM_DESTROY to each.
+    :return: bool; True if at least one stbl window was found and destroyed.
+    """
+    WNDENUMPROC = ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+
+    EnumWindows = __user32.EnumWindows
+    EnumWindows.argtypes = [WNDENUMPROC, wintypes.LPARAM]
+    EnumWindows.restype = wintypes.BOOL
+
+    GetClassNameW = __user32.GetClassNameW
+    GetClassNameW.argtypes = [wintypes.HWND, wintypes.LPWSTR, ctypes.c_int]
+    GetClassNameW.restype = ctypes.c_int
+
+    SendMessageW = __user32.SendMessageW
+    SendMessageW.argtypes = [wintypes.HWND, wintypes.UINT, wintypes.WPARAM, wintypes.LPARAM]
+    SendMessageW.restype = wintypes.LPARAM
+
+    WM_DESTROY = 0x0002
+    TARGET_CLASS = "stbdlWindow"
+
+    found_hwnds = []
+
+    @ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+    def enum_proc(hwnd, lparam):
+        class_name = ctypes.create_unicode_buffer(256)
+        GetClassNameW(hwnd, class_name, len(class_name))
+        if class_name.value == TARGET_CLASS:
+            found_hwnds.append(hwnd)
+        return True
+
+    EnumWindows(enum_proc, 0)
+
+    if not found_hwnds:
+        return False
+
+    for hwnd in found_hwnds:
+        SendMessageW(hwnd, WM_DESTROY, 0, 0)
+
+    return True
