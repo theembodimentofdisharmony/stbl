@@ -1,3 +1,6 @@
+# Copyright (c) 2026 enstarep <enstarep@rncyk.org> and other authors of stbdl
+# License: https://github.com/theembodimentofdisharmony/stbdl/blob/main/LICENSE
+
 #include <windows.h>
 #include <gdiplus.h>
 #include <dwmapi.h>
