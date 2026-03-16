@@ -212,8 +212,8 @@ void Cleanup() {
     if (g_animTimer) KillTimer(g_hOverlay, 1);
     if (g_followTimer) KillTimer(g_hOverlay, 2);
     if (g_hOverlay) DestroyWindow(g_hOverlay);
-    GdiplusShutdown(g_gdiplusToken);
     if (g_pImage) delete g_pImage;
+    GdiplusShutdown(g_gdiplusToken);
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
