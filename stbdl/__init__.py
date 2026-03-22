@@ -5,7 +5,7 @@ import os
 import subprocess
 import ctypes
 from ctypes import wintypes
-
+import sys
 
 __version__ = "0.5.4"
 
