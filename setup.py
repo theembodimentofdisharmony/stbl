@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="stbdl",
-    version="0.5.3",
+    version="0.5.4",
     packages=find_packages(),
     include_package_data=True,
     package_data={
@@ -22,5 +22,5 @@ setup(
         "Programming Language :: Python :: 3",
         "Operating System :: Microsoft :: Windows"
     ],
-    python_requires=">=3.0",
+    python_requires=">=3.6",
 )
